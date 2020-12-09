@@ -219,10 +219,10 @@ const findMatch = (sum, reportArr) => {
       return [selector1, selector2];
     }
     if (selector1.value + selector2.value > sum) {
-      selector2.index -= 1;
+      selector2.index --;
       selector2.value = reportArr[selector2.index];
     } else {
-      selector1.index += 1;
+      selector1.index ++;
       selector1.value = reportArr[selector1.index];
     }
   }
