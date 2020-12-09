@@ -1,5 +1,5 @@
-const ,report = [
-  1664,,
+const report = [
+  1664,
   1909,
   1904,
   1638,
@@ -198,13 +198,35 @@ const ,report = [
   1237,
   1510,
   1093
-]
+];
 
 // find the two entries that sum to 2020 and then multiply those two numbers together
 
-const findMatch = (reportArr) => {
-
+const findMatch = (sum, reportArr) => {
   const sortedReport = reportArr.sort((a, b) => a - b);
 
-  return
+  const selector1 = {
+    index: 0,
+    value : sortedReport[0]
+  };
+  const selector2 = {
+    index: sortedReport.length -1,
+    value : sortedReport[sortedReport.length -1]
+  };
+
+  while (selector1.index !== selector2.index) {
+    if (selector1.value + selector2.value === sum) {
+      return [selector1, selector2];
+    }
+    if (selector1.value + selector2.value > sum) {
+      selector2.index -= 1;
+      selector2.value = reportArr[selector2.index];
+    } else {
+      selector1.index += 1;
+      selector1.value = reportArr[selector1.index];
+    }
+  }
+  return "No match in report"
 }
+
+console.log(findMatch(2020, report));
