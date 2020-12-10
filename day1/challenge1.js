@@ -200,7 +200,7 @@ const report = [
   1093
 ];
 
-// find the two entries that sum to 2020 and then multiply those two numbers together
+// find the two entries that sum to 2020
 
 const findMatch = (sum, reportArr) => {
   const sortedReport = reportArr.sort((a, b) => a - b);
