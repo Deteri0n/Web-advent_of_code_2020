@@ -2,17 +2,16 @@ const fs = require('fs');
 
 const checkSlop = (parsedData) => {
   let nbTrees = 0;
-  
   let x = 0;
 
   for (let y of parsedData) {
     if (x >= y.length) {
-      x = x - y.length;
+      x -= y.length;
     }
     if (y.charAt(x) === '#') {
       nbTrees ++;
     }
-    x = x + 3;
+    x += 3;
   }
   console.log(nbTrees);
 }
