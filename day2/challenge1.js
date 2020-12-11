@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { readFile } from 'fs';
 
 const checkPasswords = (parsedData) => {
   let nbValidPasswords = 0;
@@ -7,7 +7,7 @@ const checkPasswords = (parsedData) => {
     const upperLim = parseInt(array[1], 10);
     const string = array[3];
     const regex = new RegExp(array[2], 'g');
-    const matchedChar = string.match(regex) || [];
+    const matchedChar = string.match(regex) || [];
     if (lowerLim <= matchedChar.length && matchedChar.length <= upperLim) {
       nbValidPasswords ++;
     }
@@ -15,7 +15,7 @@ const checkPasswords = (parsedData) => {
   console.log(nbValidPasswords);
 }
 
-fs.readFile('./puzzleInput.txt', 'utf8', (err, data) => {
+readFile('./puzzleInput.txt', 'utf8', (err, data) => {
   if (err) throw err;
   const arrayData = data.split(/[-: '\n']+/);
   const parsedData = arrayData.map((e, i) => { 

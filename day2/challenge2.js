@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { readFile } from 'fs';
 
 const checkPasswords2 = (parsedData) => {
   let nbValidPasswords = 0;
@@ -14,7 +14,7 @@ const checkPasswords2 = (parsedData) => {
   console.log(nbValidPasswords);
 }
 
-fs.readFile('./puzzleInput.txt', 'utf8', (err, data) => {
+readFile('./puzzleInput.txt', 'utf8', (err, data) => {
   if (err) throw err;
   const arrayData = data.split(/[-: '\n']+/);
   const parsedData = arrayData.map((e, i) => { 
