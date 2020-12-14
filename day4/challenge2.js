@@ -30,11 +30,11 @@ const validateEyeColor = (color) => {
   return ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(color);
 };
 
-const validateID = (ID) => {
-  if (color.length !== 9) {
+const validateID = (IDString) => {
+  if (IDString.length !== 9) {
     return false;
   }
-  if (/[0-9]{9}/.test(color)) {
+  if (/[0-9]{9}/.test(IDString)) {
     return true;
   }
   return false;
@@ -77,7 +77,7 @@ const validatePassword = (passport) => {
         validations[encod] = validateEyeColor(field);
         break;
       case 'pid':
-        validations[encod] = 
+        validations[encod] = validateID(field);
     }
   });
 }
