@@ -24,13 +24,22 @@ const validateHairColor = (color) => {
   if (/^#[0-9a-f]{6}/.test(color)) {
     return true;
   }
-}
+  return false;
+};
 
 const validateEyeColor = (color) => {
   return ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(color);
-}
+};
 
-// const validateID = 
+const validateID = (ID) => {
+  if (color.length !== 9) {
+    return false;
+  }
+  if (/[0-9]{9}/.test(color)) {
+    return true;
+  }
+  return false;
+};
 
 const validatePassword = (passport) => {
   
