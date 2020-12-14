@@ -5,8 +5,8 @@ const validateLength = (string, int) => string.length === int;
 const validateYear = (year, min, max) => min <= parseInt(year, 10) && parseInt(year, 10) <= max;
 
 const validateHeight = (height) => {
-  const unit = field.slice(-2);
-  const value = parseInt(field.slice(0, field.length - 2));
+  const unit = height.slice(-2);
+  const value = parseInt(height.slice(0, height.length - 2));
   
   if (unit === 'in') {
     return 59 <= value && value <= 76;
@@ -40,7 +40,7 @@ const validateID = (IDString) => {
   return false;
 };
 
-const validatePassword = (passport) => {
+const validatePassport = (passport) => {
   
   const validations = {
     byr: false,
@@ -80,14 +80,20 @@ const validatePassword = (passport) => {
         validations[encod] = validateID(field);
     }
   });
+  
+  if (Object.values(validations).filter((e) => e === false).length) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 const checkPassports = (parsedData) => {
   let nbCorrectPasswords = 0;
 
   parsedData.forEach((p) => {
-    
-    if(!Object.values(validations).filter((e) => e === false).length) {
+  
+    if(validatePassport(p)) {
       nbCorrectPasswords++;
     }
   });
