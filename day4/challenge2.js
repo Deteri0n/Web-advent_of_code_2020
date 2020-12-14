@@ -26,6 +26,12 @@ const validateHairColor = (color) => {
   }
 }
 
+const validateEyeColor = (color) => {
+  return ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(color);
+}
+
+// const validateID = 
+
 const validatePassword = (passport) => {
   
   const validations = {
@@ -54,8 +60,16 @@ const validatePassword = (passport) => {
         validations[encod] = validateLength(field, 4) && validateYear(field, 2020, 2030);
         break;
       case 'hgt':
-        validateHeight(field);
+        validations[encod] = validateHeight(field);
         break;
+      case 'hcl':
+        validations[encod] = validateHairColor(field);
+        break;
+      case 'ecl':
+        validations[encod] = validateEyeColor(field);
+        break;
+      case 'pid':
+        validations[encod] = 
     }
   });
 }
