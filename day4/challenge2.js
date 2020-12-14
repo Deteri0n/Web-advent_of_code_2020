@@ -21,10 +21,7 @@ const validateHairColor = (color) => {
   if (color.length !== 7) {
     return false;
   }
-  if (color.slice(0, 1) !== '#') {
-    return false;
-  }
-  if (/[0-9+a-f]/g.test(color.slice(1)) {
+  if (/^#[0-9a-f]{6}/.test(color)) {
     return true;
   }
 }
