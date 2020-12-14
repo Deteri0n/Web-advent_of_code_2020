@@ -12,9 +12,8 @@ const validateHeight = (height) => {
     return 59 <= value && value <= 76;
   } else if (unit === 'cm') {
     return 150 <= value && value <= 193;
-  } else {
-    return false;
   }
+  return false;
 };
 
 const validateHairColor = (color) => {
