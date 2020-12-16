@@ -1,12 +1,13 @@
 const { readFile } = require('fs');
 
-const getHighestSeatId = (seatsID) => {
+const getHighestSeatID = (seats) => {
+  const seatsID = seats.map(seat => seat[0] + seat[1] * 8)
   console.log(Math.max(...seatsID));
 }
 
 const getSeats = (range, parsedData) => {
   
-  const seatsID = parsedData.map(string => {
+  const seats = parsedData.map(string => {
     const column = [0, range[0]];
     const row = [0, range[1]];
     
@@ -27,9 +28,9 @@ const getSeats = (range, parsedData) => {
           break;
       }
     }
-    return [column[0] + row[0] * 8];
+    return [column[0], row[0]];
   })
-  getHighestSeatId(seatsID);
+  getHighestSeatID(seats);
 }
 
 readFile('./puzzleInput.txt', 'utf8', (err, data) => {
